@@ -1,0 +1,19 @@
+The steps I've taken to perform EDA and preprocessing:
+- Chose W store datasets and loaded features.csv, sales.csv, and stores.csv files
+- Checked number of rows and columns of datasets (.shape)
+- Overview first 10 instances of datasets. (.head(10))
+- Displayed key statistical measures (mean and standard deviation) (.describe())
+- Visualised (histogram, boxplot, bar, line) numerical (Temperature, Fuel_Price, CPI, Unemployment, Markdowns, Weekly_Sales, Sizes) and categorical variables (Type, Store)
+- Checked types of variables and converted them to numerical values
+- Checked missing values of columns in datasets (.isnull().sum(),  .isnull().any(axis=1)) and filled missing values of markdowns, and CPI and Unemployment by 0 and median respectively
+- Removed outliers (negative sales, unusual and extremely high weekly sales)
+- Standardise values’ variables by their means and standard deviation (StandardScaler())
+- Balanced number of values in IsHoliday column
+- Dropped insignificant column (Date, YearMonth)
+- Identifed correlations between variables and them with weekly sales (response variable) and dropped variables that may cause potential multicollinearity
+
+
+Interesting findings:
+- Weekly_Sales is very strongly right-skewed and contains many outliers which are extremely high values. The visualisation of monthly sales of most stores showing a clear pattern that they have peak seasons in a certain month (December). Weekly_Sales also contains several negative sales which suggest the amount of product return exceed purchases.
+- More than half of markdown columns' values are missing which suggest there is no promotions run in that week. Thus, filling missing values by 0 is appropriate.
+- There are serveral CPI and Unemployment values are missing which suggest the values may not be collected yet as they are barely be nothing or exactly 0. Thus, filling missing values by their median is appropriate as their values are not distributed evenly.
